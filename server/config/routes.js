@@ -1,6 +1,6 @@
 const posts_controller = require("../controllers/posts.js")
 
-module.exports = function(app){
+module.exports = function (app) {
 
   app.get('/posts', posts_controller.renderAll);
   app.get('/posts/:id', posts_controller.renderOne);

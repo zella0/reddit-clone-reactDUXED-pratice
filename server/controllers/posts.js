@@ -23,7 +23,8 @@ module.exports = {
     promiseArr.push(commentsCountPromise);
 
     const commentsPromise = knex('comments')
-      .where('parent_post_id', req.params.id);
+      .where('parent_post_id', req.params.id)
+      .orderBy('id')
     promiseArr.push(commentsPromise);
 
     Promise.all(promiseArr)
@@ -31,7 +32,7 @@ module.exports = {
         res.json({
           post: response[0],
           comments_amount: response[1],
-          comments: response[2]
+          comments: response[2],
         })
       })
   },
